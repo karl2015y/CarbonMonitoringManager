@@ -49,7 +49,7 @@
         <br>
         <div class="articles">
             <div v-for="item in ans_filtted" class="article">
-                <img :src="`/image/${item.file_name}`" alt="">
+                <img :src="`image/${item.file_name}`" alt="">
                 <br>
                 <button @click="item.show_text = !item.show_text">文字開關</button>
                 <p v-if="item.show_text" v-text="item.text" />
@@ -67,7 +67,7 @@
     Vue.createApp({
         data() {
             return {
-                keyword_text: '溫室 京都',
+                keyword_text: '',
                 ans: [],
                 ans_filtted: [],
                 showText: false
@@ -120,7 +120,7 @@
 
         mounted() {
             axios
-                .get('/ans.json')
+                .get('ans.json')
                 .then(response => (this.ans = response.data))
                 .catch(function (error) { // 请求失败处理
                     console.log(error);
